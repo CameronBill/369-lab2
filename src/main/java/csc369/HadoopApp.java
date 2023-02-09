@@ -61,7 +61,6 @@ public class HadoopApp {
 		FileInputFormat.addInputPath(job2, new Path("temp_dir"));
         FileOutputFormat.setOutputPath(job2, new Path(otherArgs[2]));
 
-        System.exit(job.waitForCompletion(true) ? 0: 1);
 		System.exit(job2.waitForCompletion(true) ? 0: 1);
 	} else {
 		FileInputFormat.addInputPath(job, new Path(otherArgs[1]));
