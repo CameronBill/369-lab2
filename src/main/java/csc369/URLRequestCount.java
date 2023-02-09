@@ -55,7 +55,7 @@ public class URLRequestCount {
 	    String[] sa = value.toString().split(" ");
         IntWritable count = new IntWritable(Int.parseInt(sa[0]));
 	    Text url = new Text();
-        url.set(entryArray[1]);
+        url.set(sa[1]);
 
 	    context.write(count, url);
         }
