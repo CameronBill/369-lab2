@@ -10,7 +10,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 
-public class ResponseCodecount {
+public class ResponseCodeCount {
 
     public static final Class OUTPUT_KEY_CLASS = IntWritable.class;
     public static final Class OUTPUT_VALUE_CLASS = IntWritable.class;
