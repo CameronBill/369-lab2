@@ -14,6 +14,8 @@ public class URLRequestCount {
 
     public static final Class OUTPUT_KEY_CLASS = Text.class;
     public static final Class OUTPUT_VALUE_CLASS = IntWritable.class;
+    public static final Class OUTPUT_KEY_CLASS2 = IntWritable.class;
+    public static final Class OUTPUT_VALUE_CLASS2 = Text.class;
 
     public static class MapperImpl extends Mapper<LongWritable, Text, Text, IntWritable> {
 	private final IntWritable one = new IntWritable(1);
@@ -28,23 +30,42 @@ public class URLRequestCount {
         }
     }
 
-    
     public static class ReducerImpl extends Reducer<Text, IntWritable, IntWritable, Text> {
     private IntWritable result = new IntWritable();
 
         @Override
 	protected void reduce(Text url, Iterable<IntWritable> counts,
 			      Context context) throws IOException, InterruptedException {
-            
             int sum = 0;
             Iterator<IntWritable> itr = counts.iterator();
 
             while (itr.hasNext()){
                 sum += itr.next().get();
             }
-            
             result.set(sum);
             context.write(result, url);
+        }
+    }
+
+    public static class MapperImpl2 extends Mapper<IntWritable, Text, IntWritable, Text> {
+
+        @Override
+	protected void map(IntWritable key, Text value,
+			   Context context) throws IOException, InterruptedException {
+	    context.write(key, value);
+        }
+    }
+
+    public static class ReducerImpl2 extends Reducer<IntWritable, Text, IntWritable, Text> {
+
+        @Override
+	protected void reduce(IntWritable count, Iterable<Text> urls,
+			      Context context) throws IOException, InterruptedException {
+            
+            Iterator<Text> itr = urls.iterator();
+            while (itr.hasNext()){
+                context.write(count, itr.next());
+            }
         }
     }
 

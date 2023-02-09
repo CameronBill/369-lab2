@@ -18,6 +18,8 @@ public class HadoopApp {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
         Job job = new Job(conf, "Hadoop example");
+		Bool chaining = False;
+		Job job2 = new Job(conf, "Secondary Job");
         String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
 
 	if (otherArgs.length < 3) {
@@ -39,19 +41,35 @@ public class HadoopApp {
 	    job.setOutputKeyClass(AccessLog2.OUTPUT_KEY_CLASS);
 	    job.setOutputValueClass(AccessLog2.OUTPUT_VALUE_CLASS);
 	} else if ("URLRequestCount".equalsIgnoreCase(otherArgs[0])) {
+		chaining = true;
 		job.setReducerClass(URLRequestCount.ReducerImpl.class);
 	    job.setMapperClass(URLRequestCount.MapperImpl.class);
 	    job.setOutputKeyClass(URLRequestCount.OUTPUT_KEY_CLASS);
 	    job.setOutputValueClass(URLRequestCount.OUTPUT_VALUE_CLASS);
+		job2.setReducerClass(URLRequestCount.ReducerImpl2.class);
+		job2.setMapperClass(URLRequestCount.MapperImpl2.class);
+		job2.setOutputKeyClass(URLRequestCount.OUTPUT_KEY_CLASS2);
+		job2.setOutputValueClass(URLRequestCount.OUTPUT_VALUE_CLASS2);
 	} else {
 	    System.out.println("Unrecognized job: " + otherArgs[0]);
 	    System.exit(-1);
 	}
 
-        FileInputFormat.addInputPath(job, new Path(otherArgs[1]));
-        FileOutputFormat.setOutputPath(job, new Path(otherArgs[2]));
+	if (chaining) {
+		FileInputFormat.addInputPath(job, new Path(otherArgs[1]));
+		FileOutputFormat.setOutputPath(job, new Path("temp_dir"))
+		FileInputFormat.addInputPath(job2, new Path("temp_dir"));
+        FileOutputFormat.setOutputPath(job2, new Path(otherArgs[2]));
 
         System.exit(job.waitForCompletion(true) ? 0: 1);
+		System.exit(job2.waitForCompletion(true) ? 0: 1);
+	} else {
+		FileInputFormat.addInputPath(job, new Path(otherArgs[1]));
+		FileOutputFormat.setOutputPath(job, new Path(otherArgs[2]));
+
+		System.exit(job.waitForCompletion(true) ? 0: 1);
+	}
+        
     }
 
 }
