@@ -29,7 +29,7 @@ public class URLRequestCount {
     }
 
     
-    public static class ReducerImpl extends Reducer<LongWritable, Text, Text, LongWritable> {
+    public static class ReducerImpl extends Reducer<Text, IntWritable, LongWritable, Text> {
     private LongWritable result = new LongWritable();
 
         @Override
