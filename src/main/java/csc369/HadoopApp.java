@@ -18,7 +18,7 @@ public class HadoopApp {
     public static void main(String[] args) throws IOException, InterruptedException, ClassNotFoundException {
         Configuration conf = new Configuration();
         Job job = new Job(conf, "Hadoop example");
-		Bool chaining = false;
+		Boolean chaining = false;
 		Job job2 = new Job(conf, "Secondary Job");
         String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
 
