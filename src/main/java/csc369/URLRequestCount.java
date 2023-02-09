@@ -23,9 +23,9 @@ public class URLRequestCount {
         @Override
 	protected void map(LongWritable key, Text value,
 			   Context context) throws IOException, InterruptedException {
-	    String[] entryArray = value.toString().split(" ");
+	    String[] sa = value.toString().split(" ");
 	    Text url = new Text();
-        url.set(entryArray[6]);
+        url.set(sa[6]);
 	    context.write(url, one);
         }
     }
