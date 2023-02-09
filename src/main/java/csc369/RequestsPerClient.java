@@ -18,7 +18,7 @@ public class RequestsPerClient {
     public static final Class OUTPUT_VALUE_CLASS2 = Text.class;
 
     public static class MapperImpl extends Mapper<LongWritable, Text, Text, IntWritable> {
-	private final Text hardCodedURL = new Text("/robots.txt");
+	private final Text hardCodedURL = new Text("/razor.html");
    	private final IntWritable one = new IntWritable(1);
 
         @Override
