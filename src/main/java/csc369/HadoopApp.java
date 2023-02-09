@@ -46,6 +46,7 @@ public class HadoopApp {
 	    job.setMapperClass(URLRequestCount.MapperImpl.class);
 	    job.setOutputKeyClass(URLRequestCount.OUTPUT_KEY_CLASS);
 	    job.setOutputValueClass(URLRequestCount.OUTPUT_VALUE_CLASS);
+		
 		job2.setReducerClass(URLRequestCount.ReducerImpl2.class);
 		job2.setMapperClass(URLRequestCount.MapperImpl2.class);
 		job2.setOutputKeyClass(URLRequestCount.OUTPUT_KEY_CLASS2);

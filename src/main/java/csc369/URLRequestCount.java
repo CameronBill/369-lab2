@@ -47,12 +47,17 @@ public class URLRequestCount {
         }
     }
 
-    public static class MapperImpl2 extends Mapper<IntWritable, Text, IntWritable, Text> {
+    public static class MapperImpl2 extends Mapper<LongWritable, Text, IntWritable, Text> {
 
         @Override
-	protected void map(IntWritable key, Text value,
+	protected void map(LongWritable key, Text value,
 			   Context context) throws IOException, InterruptedException {
-	    context.write(key, value);
+	    String[] sa = value.toString().split(" ");
+        IntWritable count = new IntWritable(Int.parseInt(sa[0]));
+	    Text url = new Text();
+        url.set(entryArray[1]);
+
+	    context.write(count, url);
         }
     }
 
