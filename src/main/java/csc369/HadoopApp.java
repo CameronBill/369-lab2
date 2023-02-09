@@ -57,7 +57,7 @@ public class HadoopApp {
 
 	if (chaining) {
 		FileInputFormat.addInputPath(job, new Path(otherArgs[1]));
-		FileOutputFormat.setOutputPath(job, new Path("temp_dir"))
+		FileOutputFormat.setOutputPath(job, new Path("temp_dir"));
 		FileInputFormat.addInputPath(job2, new Path("temp_dir"));
         FileOutputFormat.setOutputPath(job2, new Path(otherArgs[2]));
 
