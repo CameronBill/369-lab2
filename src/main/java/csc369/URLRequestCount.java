@@ -52,7 +52,7 @@ public class URLRequestCount {
         @Override
 	protected void map(LongWritable key, Text value,
 			   Context context) throws IOException, InterruptedException {
-	    String[] sa = value.toString().split(" ");
+	    String[] sa = value.toString().split("\t");
         IntWritable count = new IntWritable(Integer.parseInt(sa[0]));
 	    Text url = new Text();
         url.set(sa[1]);
