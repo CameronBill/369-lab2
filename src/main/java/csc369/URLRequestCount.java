@@ -12,7 +12,7 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 public class URLRequestCount {
 
-    public static final Class OUTPUT_KEY_CLASS = LongWritable.class;
+    public static final Class OUTPUT_KEY_CLASS = IntWritable.class;
     public static final Class OUTPUT_VALUE_CLASS = Text.class;
 
     public static class MapperImpl extends Mapper<LongWritable, Text, Text, IntWritable> {
@@ -29,8 +29,8 @@ public class URLRequestCount {
     }
 
     
-    public static class ReducerImpl extends Reducer<Text, IntWritable, LongWritable, Text> {
-    private LongWritable result = new LongWritable();
+    public static class ReducerImpl extends Reducer<Text, IntWritable, IntWritable, Text> {
+    private IntWritable result = new IntWritable();
 
         @Override
 	protected void reduce(Text url, Iterable<IntWritable> counts,
