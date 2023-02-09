@@ -16,15 +16,15 @@ public class URLRequestCount {
     public static final Class OUTPUT_VALUE_CLASS = Text.class;
 
     public static class MapperImpl extends Mapper<LongWritable, Text, Text, IntWritable> {
+	private final IntWritable one = new IntWritable(1);
 
         @Override
 	protected void map(LongWritable key, Text value,
 			   Context context) throws IOException, InterruptedException {
 	    String[] entryArray = value.toString().split(" ");
 	    Text url = new Text();
-            url.set(sa[6]);
-            IntWritable count = new IntWritable(1);
-	    context.write(url, count);
+        url.set(entryArray[6]);
+	    context.write(url, one);
         }
     }
 
@@ -40,7 +40,7 @@ public class URLRequestCount {
             Iterator<Text> itr = urls.iterator();
 
             while (itr.hasNext()){
-                sum += itr.next();
+                sum += itr.next().get();
             }
             
             result.set(sum);
