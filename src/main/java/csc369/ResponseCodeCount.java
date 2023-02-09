@@ -22,7 +22,7 @@ public class ResponseCodeCount {
 	protected void map(LongWritable key, Text value,
 			   Context context) throws IOException, InterruptedException {
 	    String[] sa = value.toString().split(" ");
-	    Text respCode = new IntWritable();
+	    IntWritable respCode = new IntWritable();
         respCode.set(Integer.parseInt(sa[8]));
 	    context.write(respCode, one);
         }
