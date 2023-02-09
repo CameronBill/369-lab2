@@ -61,6 +61,17 @@ public class HadoopApp {
 	    job.setMapperClass(TotalBytesToHost.MapperImpl.class);
 	    job.setOutputKeyClass(TotalBytesToHost.OUTPUT_KEY_CLASS);
 	    job.setOutputValueClass(TotalBytesToHost.OUTPUT_VALUE_CLASS);
+	} else if ("RequestsPerClient".equalsIgnoreCase(otherArgs[0])) {
+		chaining = true;
+		job.setReducerClass(RequestsPerClient.ReducerImpl.class);
+	    job.setMapperClass(RequestsPerClient.MapperImpl.class);
+	    job.setOutputKeyClass(RequestsPerClient.OUTPUT_KEY_CLASS);
+	    job.setOutputValueClass(RequestsPerClient.OUTPUT_VALUE_CLASS);
+
+		job2.setReducerClass(RequestsPerClient.ReducerImpl2.class);
+		job2.setMapperClass(RequestsPerClient.MapperImpl2.class);
+		job2.setOutputKeyClass(RequestsPerClient.OUTPUT_KEY_CLASS2);
+		job2.setOutputValueClass(RequestsPerClient.OUTPUT_VALUE_CLASS2);
 	} else {
 	    System.out.println("Unrecognized job: " + otherArgs[0]);
 	    System.exit(-1);
