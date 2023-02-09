@@ -37,7 +37,7 @@ public class RequestsPerClient {
         }
     }
 
-    public static class ReducerImpl extends Reducer<Text, IntWritable, intWritable, Text> {
+    public static class ReducerImpl extends Reducer<Text, IntWritable, IntWritable, Text> {
     private IntWritable result = new IntWritable();
 
         @Override
