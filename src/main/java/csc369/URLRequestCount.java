@@ -37,7 +37,7 @@ public class URLRequestCount {
 			      Context context) throws IOException, InterruptedException {
             
             int sum = 0;
-            Iterator<Text> itr = counts.iterator();
+            Iterator<IntWritable> itr = counts.iterator();
 
             while (itr.hasNext()){
                 sum += itr.next().get();
