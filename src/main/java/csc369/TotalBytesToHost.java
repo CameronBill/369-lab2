@@ -25,7 +25,7 @@ public class TotalBytesToHost {
 	        Text clientIP = new Text();
             IntWritable bytesSent = new IntWritable();
             clientIP.set(sa[0]);
-            bytesSent.set(Integer.parseInt(sa[9]))
+            bytesSent.set(Integer.parseInt(sa[9]));
             if clientIP.equals(hardCodedIP) {
                 context.write(clientIP, bytesSent);
             }
