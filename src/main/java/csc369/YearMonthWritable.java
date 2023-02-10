@@ -22,7 +22,7 @@ public class YearMonthWritable implements WritableComparable<YearMonthWritable> 
     }
 
     public void write(DataOutput out) throws IOException {
-        out.writeUTF(year.get());
+        out.writeUTF(year);
         out.writeUTF(Integer.toString(month.get()));
     }
 
