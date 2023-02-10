@@ -7,7 +7,7 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.WritableComparable;
 import java.util.Comparator;
 
-public abstract class YearMonthWritable implements WritableComparable<YearMonthWritable> {
+public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
 
     public IntWritable year;
     public IntWritable month;
