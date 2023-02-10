@@ -26,7 +26,7 @@ public class RequestsPerMonth {
 	        String[] date = sa[3].split("/");
             YearMonthWritable yearMonth = new YearMonthWritable();
             String[] splitYear = date[2].split(":");
-            String yearText = splitYear[0]
+            String yearText = splitYear[0];
 
             yearMonth.year.set(Integer.parseInt(yearText));
             for (int i = 0; i < YearMonthWritable.months.length; i++) {
