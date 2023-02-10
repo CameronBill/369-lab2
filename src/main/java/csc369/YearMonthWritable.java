@@ -1,10 +1,12 @@
-package custom;
+package csc369;
+
+import java.io.IOException;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.WritableComparable;
 import java.util.Comparator;
-import java.util.Comparator.comparing;
+import java.util.Comparator.Comparing;
 
 public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
 
@@ -13,7 +15,7 @@ public class YearMonthWritable implements WritableComparable<YearMonthWritable> 
     public static final String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     private static final Comparator<YearMonthWritable> YMCMP =
-        comparing((YearMonthWritable yearMonth) -> yearMonth.year).thenComparing(yearMonth -> yearMonth.month);
+        comparing((YearMonthWritable yearMonth) -> yearMonth.year).thenComparing(YearMonthWritable yearMonth -> yearMonth.month);
 
     @Override
     public void readFields(DataInput in) throws IOException {
