@@ -15,13 +15,13 @@ public class YearMonthWritable implements WritableComparable<YearMonthWritable> 
     public static final String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     @Override
-    public void readFields(DataInput in) throws IOException {
+    public void readFields(DataInputStream in) throws IOException {
         year = in.readUTF();
         month = in.readUTF();
     }
 
     @Override
-    public void write(DataOutput out) throws IOException {
+    public void write(DataOutputStream out) throws IOException {
         out.writeUTF(year);
         out.writeUTF(month);
     }
