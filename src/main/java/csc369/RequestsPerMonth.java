@@ -11,19 +11,6 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 
 
-public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
-
-    public IntWritable year;
-    public IntWritable month;
-    public static final String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-
-
-    @Override
-    public int compareTo(YearMonthWritable other) {
-        return ComparisonChain.start().compare(year, other.year).compare(month, other.month);
-    }
-}
-
 public class RequestsPerMonth {
 
     public static final Class OUTPUT_KEY_CLASS = YearMonthWritable.class;
@@ -41,7 +28,7 @@ public class RequestsPerMonth {
 
             yearMonth.year.set(date[2].split(":")[0]);
             for (int i = 0; i < YearMonthWritable.months.length; i++) {
-                if (date[1].equals(months[i])) {
+                if (date[1].equals(YearMonthWritable.months[i])) {
                     yearMonth.month.set(i + 1);
                 }
             }
