@@ -15,9 +15,9 @@ public class YearMonthWritable implements WritableComparable<YearMonthWritable> 
 
     @Override
     public int compareTo(YearMonthWritable that) {
-        int res = this.year.compare(that.year);
+        int res = this.year.compareTo(that.year);
         if (res == 0) {
-            return this.month.compare(that.month);
+            return this.month.compareTo(that.month);
         }
         else {
             return res;
