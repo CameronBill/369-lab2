@@ -10,12 +10,13 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Reducer;
 
-final String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
 public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
 
     private IntWritable year;
     private IntWritable month;
+    public static final String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
+
 
     @Override
     public int compareTo(YearMonthWritable other) {
@@ -39,7 +40,7 @@ public class RequestsPerMonth {
             YearMonthWritable yearMonth = new YearMonthWritable();
 
             yearMonth.year.set(date[2].split(":")[0]);
-            for (int i = 0; i < months.length; i++) {
+            for (int i = 0; i < YearMonthWritable.months.length; i++) {
                 if (date[1].equals(months[i])) {
                     yearMonth.month.set(i + 1);
                 }
@@ -57,7 +58,7 @@ public class RequestsPerMonth {
 			    Context context) throws IOException, InterruptedException {
             int sum = 0;
             Text yearMonthText = new Text();
-            yearMonthText.set(toString(yearMonth.year) + "-" + months[yearMonth.month - 1]);
+            yearMonthText.set(toString(yearMonth.year) + "-" + YearMonthWritable.months[yearMonth.month - 1]);
             Iterator<IntWritable> itr = counts.iterator();
 
             while (itr.hasNext()){
