@@ -7,17 +7,20 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.WritableComparable;
 import java.util.Comparator;
 
-public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
+public abstract class YearMonthWritable implements WritableComparable<YearMonthWritable> {
 
     public IntWritable year;
     public IntWritable month;
     public static final String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
-    private static final Comparator<YearMonthWritable> YMCMP =
-        comparing((YearMonthWritable yearMonth) -> yearMonth.year).thenComparing(yearMonth -> yearMonth.month);
-
     @Override
     public int compareTo(YearMonthWritable that) {
-        return YMCMP.compare(this, that);
+        int res = this.year.compare(that.year);
+        if (res == 0) {
+            return this.month.compare(that.month);
+        }
+        else {
+            return res;
+        }
     }
 }
