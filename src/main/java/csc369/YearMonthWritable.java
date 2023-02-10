@@ -3,7 +3,7 @@ package custom;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.WritableComparable;
-import static java.util.Comparator.comparing;
+import java.util.Comparator;
 
 public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
 
