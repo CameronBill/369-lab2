@@ -14,6 +14,7 @@ public class YearMonthWritable implements WritableComparable<YearMonthWritable> 
     public IntWritable month;
     public static final String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
+    @Override
     public void readFields(DataInputStream in) throws IOException {
         year.set(Integer.parseInt(in.readUTF()));
         month.set(Integer.parseInt(in.readUTF()));
