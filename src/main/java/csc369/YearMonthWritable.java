@@ -1,3 +1,5 @@
+package custom;
+
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import static java.util.Comparator.comparing;
