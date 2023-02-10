@@ -1,6 +1,8 @@
 package csc369;
 
 import java.io.IOException;
+import java.io.DataInput;
+import java.io.DataOutput;
 import java.io.DataOutputStream;
 import java.io.DataInputStream;
 import org.apache.hadoop.io.IntWritable;
@@ -15,7 +17,7 @@ public class YearMonthWritable implements WritableComparable<YearMonthWritable> 
     public static final String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     @Override
-    public void readFields(DataInput.DataInputStream in) throws IOException {
+    public void readFields(DataInputStream in) throws IOException {
         year.set(Integer.parseInt(in.readUTF()));
         month.set(Integer.parseInt(in.readUTF()));
     }
