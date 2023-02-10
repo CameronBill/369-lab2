@@ -13,8 +13,8 @@ import org.apache.hadoop.mapreduce.Reducer;
 
 public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
 
-    private IntWritable year;
-    private IntWritable month;
+    public IntWritable year;
+    public IntWritable month;
     public static final String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
 
