@@ -1,4 +1,4 @@
-import java.util.Comparator.comparing;
+import static java.util.Comparator.comparing;
 
 public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
 
