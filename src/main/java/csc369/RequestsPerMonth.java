@@ -28,7 +28,7 @@ public class RequestsPerMonth {
             String[] splitYear = date[2].split(":");
             String yearText = splitYear[0];
 
-            yearMonth.year.set(Integer.parseInt(yearText));
+            yearMonth.year.set(yearText);
             for (int i = 0; i < YearMonthWritable.months.length; i++) {
                 if (date[1].equals(YearMonthWritable.months[i])) {
                     yearMonth.month.set(i + 1);
@@ -47,7 +47,7 @@ public class RequestsPerMonth {
 			    Context context) throws IOException, InterruptedException {
             int sum = 0;
             Text yearMonthText = new Text();
-            yearMonthText.set(Integer.toString(yearMonth.year.get()) + "-" + YearMonthWritable.months[yearMonth.month.get() - 1]);
+            yearMonthText.set(yearMonth.year.get() + "-" + YearMonthWritable.months[yearMonth.month.get() - 1]);
             Iterator<IntWritable> itr = counts.iterator();
 
             while (itr.hasNext()){

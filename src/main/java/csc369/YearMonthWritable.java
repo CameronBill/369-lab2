@@ -10,18 +10,18 @@ import java.util.Comparator;
 
 public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
 
-    public IntWritable year;
+    public Text year;
     public IntWritable month;
     public static final String[] months = {"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        year.set(Integer.parseInt(in.readUTF()));
+        year.set(in.readUTF());
         month.set(Integer.parseInt(in.readUTF()));
     }
 
     public void write(DataOutput out) throws IOException {
-        out.writeUTF(Integer.toString(year.get()));
+        out.writeUTF(year.get());
         out.writeUTF(Integer.toString(month.get()));
     }
 
