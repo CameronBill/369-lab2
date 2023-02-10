@@ -41,7 +41,7 @@ public class RequestsPerMonth {
             yearMonth.year.set(date[2].split(":")[0]);
             for (int i = 0; i < months.length; i++) {
                 if (date[1].equals(months[i])) {
-                    yearMonth.month.set(i + 1)
+                    yearMonth.month.set(i + 1);
                 }
             }
             
