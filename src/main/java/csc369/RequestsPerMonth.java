@@ -19,7 +19,7 @@ public class YearMonthWritable implements WritableComparable<YearMonthWritable> 
 
     @Override
     public int compareTo(YearMonthWritable other) {
-        return ComparisonChain.start().compare(year, other.year).compare(month, other.month)
+        return ComparisonChain.start().compare(year, other.year).compare(month, other.month);
     }
 }
 
