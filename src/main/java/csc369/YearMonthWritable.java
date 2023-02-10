@@ -1,3 +1,5 @@
+import org.apache.hadoop.io.IntWritable;
+import org.apache.hadoop.io.LongWritable;
 import static java.util.Comparator.comparing;
 
 public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
