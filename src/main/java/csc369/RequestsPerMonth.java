@@ -58,7 +58,7 @@ public class RequestsPerMonth {
 			    Context context) throws IOException, InterruptedException {
             int sum = 0;
             Text yearMonthText = new Text();
-            yearMonthText.set(toString(yearMonth.year) + "-" + YearMonthWritable.months[yearMonth.month.get() - 1]);
+            yearMonthText.set(yearMonth.year.get().toString() + "-" + YearMonthWritable.months[yearMonth.month.get() - 1]);
             Iterator<IntWritable> itr = counts.iterator();
 
             while (itr.hasNext()){
