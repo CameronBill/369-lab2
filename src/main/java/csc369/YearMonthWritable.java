@@ -5,6 +5,8 @@ import java.io.IOException;
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.WritableComparable;
+import org.apache.hadoop.io.DataInput;
+import org.apache.hadoop.io.DataOutput;
 import java.util.Comparator;
 
 public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
