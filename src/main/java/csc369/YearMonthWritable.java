@@ -6,7 +6,6 @@ import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.WritableComparable;
 import java.util.Comparator;
-import java.util.Comparator.Comparing;
 
 public class YearMonthWritable implements WritableComparable<YearMonthWritable> {
 
@@ -16,18 +15,6 @@ public class YearMonthWritable implements WritableComparable<YearMonthWritable> 
 
     private static final Comparator<YearMonthWritable> YMCMP =
         comparing((YearMonthWritable yearMonth) -> yearMonth.year).thenComparing(yearMonth -> yearMonth.month);
-
-    @Override
-    public void readFields(DataInput in) throws IOException {
-        year = in.readUTF();
-        month = in.readUTF();
-    }
-
-    @Override
-    public void write(DataOutput out) throws IOException {
-        out.writeUTF(year);
-        out.writeUTF(month);
-    }
 
     @Override
     public int compareTo(YearMonthWritable that) {
