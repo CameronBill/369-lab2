@@ -16,8 +16,8 @@ public class YearMonthWritable implements WritableComparable<YearMonthWritable> 
 
     @Override
     public void readFields(DataInputStream in) throws IOException {
-        year.set(in.readUTF());
-        month.set(in.readUTF());
+        year.set(Integer.parseInt(in.readUTF()));
+        month.set(Integer.parseInt(in.readUTF()));
     }
 
     @Override
