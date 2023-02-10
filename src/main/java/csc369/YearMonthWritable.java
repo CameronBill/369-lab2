@@ -15,14 +15,14 @@ public class YearMonthWritable implements WritableComparable<YearMonthWritable> 
 
     @Override
     public void readFields(DataInput in) throws IOException {
-        userId = in.readUTF();
-        pageId = in.readUTF();
+        year = in.readUTF();
+        month = in.readUTF();
     }
 
     @Override
     public void write(DataOutput out) throws IOException {
-        out.writeUTF(userId);
-        out.writeUTF(pageId);
+        out.writeUTF(year);
+        out.writeUTF(month);
     }
 
     @Override
